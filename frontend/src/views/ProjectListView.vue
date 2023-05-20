@@ -1,5 +1,4 @@
 <template>
-    <h1>This is a Project List page</h1>
 
     <div v-for="item in pState.projects" :key="item.id">
       <h4>

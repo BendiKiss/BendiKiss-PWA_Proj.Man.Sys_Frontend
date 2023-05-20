@@ -1,8 +1,8 @@
-import { reactive } from "vue"
+import { ref } from "vue"
 
 const getProjects = () => {
 
-    const pState = reactive({
+    const pState = ref({
         projects: {}
     });
 
@@ -13,7 +13,7 @@ const getProjects = () => {
             await fetch("http://localhost:2000/projects")
               .then(res => res.json())
               .then(data =>{
-                pState.projects = data
+                pState.value.projects = data
               })
             
         }
@@ -40,9 +40,6 @@ const getProjects = () => {
         fetch("http://localhost:2000/projects/delete/" + _id , { method: "DELETE"})
         .then(() => {})
     }
-
-
-
 
     return ( pState, 
             GetAllProjects, 

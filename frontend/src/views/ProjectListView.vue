@@ -1,6 +1,9 @@
 <template>
+  <div>
+    <h1>This is a Project List page</h1>
 
-    <div v-for="item in pState.projects" :key="item.id">
+    <div v-for="item in pState.project" :key="item._id">
+      
       <h4>
         {{ item.name }}
       </h4>
@@ -12,7 +15,8 @@
     </div>
     <button @click="newProject()">New project - static</button>
     <br>
-  <p>{{ pState }}</p>
+    <p>{{ pState }}</p>
+  </div>
 </template>
 
 <script>
@@ -23,13 +27,13 @@ import { onMounted } from "vue"
  
     setup () {
       
-      const { pState, GetAllProjects, newProject } = project()
+      const { pState, GetAllProjects, newProject, editProject, deleteProject } = project()
 
       onMounted(() => {
         GetAllProjects
       })
 
-      return { pState, GetAllProjects, newProject}
+      return { pState, GetAllProjects, newProject, editProject, deleteProject}
 
     }
   }

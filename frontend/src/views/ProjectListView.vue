@@ -2,7 +2,7 @@
   <div>
     <h1>This is a Project List page</h1>
 
-    <div v-for="item in pState.project" :key="item._id">
+    <div v-for="item in pState.projects" :key="item._id">
       
       <h4>
         {{ item.name }}
@@ -20,6 +20,30 @@
 </template>
 
 <script>
+/*
+import { reactive, onMounted } from 'vue'
+
+  export default{
+    setup() {
+      const pState = reactive({
+        projects: {}
+      })
+
+      function GetAll(){
+        fetch("http://localhost:2000/api/project")
+        .then(res => res.json())
+        .then(data => {
+          pState.projects = data
+        })
+      }
+      onMounted(() => {
+        GetAll()
+      })
+      return { pState, GetAll}
+    }
+  }
+*/
+
 import project from '../modules/project'
 import { onMounted } from "vue"
 
@@ -37,6 +61,7 @@ import { onMounted } from "vue"
 
     }
   }
+
 </script>
 
 <style lang="scss" scoped>

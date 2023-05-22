@@ -11,7 +11,6 @@
     <span> Test: {{ pState.newDescription }} </span>
 
     <br>
-<!-- 
     <div v-for="project in pState.projects" :key="project._id">
       <router-link :to="`/project/${project._id}`">
         <h4>
@@ -25,7 +24,6 @@
 
       <button @click="deleteProject(project._id)">Delete</button>     
     </div>
-  -->
     <br>
     <p>{{ pState }}</p>
 

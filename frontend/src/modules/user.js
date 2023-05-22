@@ -10,8 +10,22 @@ const getUser = () => {
         name: '',
         username: '',
         email: '',
-        password: ''
+        password: '',
+        users: {}
     })
+
+    const getAllUsers = async () => {
+        try{
+            await fetch("http://localhost:2000/api/user", {method: 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                uState.value.users = data
+            })
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }
 
     const newUser = () => {
         const requestOptions = {
@@ -50,9 +64,9 @@ const getUser = () => {
             password: uState.value.newPassword
             })
         };
-        await fetch("http://localhost:2000/user/new", requestOptions)
+        await fetch("http://localhost:2000/user/login", requestOptions)
         .then(res => res.json())
-        .then(data => {
+        .then(data => { //storing the data locally in the browser
             localStorage.setItem("auth-token", data.data.token),
             localStorage.setItem("userID", data.data.id),
             localStorage.setItem("username", data.data.username),
@@ -73,6 +87,7 @@ const getUser = () => {
     }
     return {
             uState,
+            getAllUsers,
             newUser,
             loginUser,
             logOut

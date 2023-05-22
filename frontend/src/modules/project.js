@@ -40,7 +40,7 @@ const getTodos = () => {
         await fetch("http://localhost:2000/api/project", {method: 'GET'})
           .then(res => res.json())
           .then(data =>{
-            pState.value.project = data
+            pState.project = data
         })
     }
     catch(error) {

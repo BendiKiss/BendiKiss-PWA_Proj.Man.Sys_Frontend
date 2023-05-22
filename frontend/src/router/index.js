@@ -6,6 +6,16 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  }, 
+  {
+    path: '/projects',
+    name: 'ProjectList',
+    component: () => import('../views/ProjectListView.vue')
+  },
+  {
+    path: '/tasks',
+    name: 'TaskList',
+    component: () => import('../views/TaskListView.vue')
   },
   {
     path: '/login',
@@ -27,16 +37,7 @@ const routes = [
     name: 'Task',
     component: () => import('../views/TaskView.vue')
   },
-  {
-    path: '/projects',
-    name: 'ProjectList',
-    component: () => import('../views/ProjectListView.vue')
-  },
-  {
-    path: '/tasks',
-    name: 'TaskList',
-    component: () => import('../views/TaskListView.vue')
-  },
+
   {
     path: '/createproject',
     name: 'createproject',

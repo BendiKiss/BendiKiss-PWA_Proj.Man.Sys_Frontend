@@ -3,7 +3,6 @@
 
     <h1>This is a Project List page</h1>
     <button @click="newProject()">New project</button>
-    <q form @submit.prevent="newProperty()">New project</q>
     <br>
     <input type="text" placeholder="Project name" v-model="pState.newpName">
     <span> Test: {{ pState.newpName }} </span>
@@ -35,6 +34,9 @@
 
 <script>
 /* 
+
+  ^ "setup" into the script tag
+
 import project from '../modules/project'
 import {  onMounted, ref } from 'vue';
   
@@ -65,25 +67,6 @@ import {  onMounted, ref } from 'vue';
 
       return { pState, GetAll};
     }
- */
-  /*
-
-  ^ "setup" into the script tag
-  |
-  import project from '../modules/project'
-  import { onMounted, ref } from "vue"
-
-  const pState = ref({
-    newpName: '',
-    newDescription: '',
-    projects: []
-  })
-
-  const { pState, GetAllProjects, newProject, editProject, deleteProject } = project()
-
-  onMounted(() => {
-    GetAllProjects()
-  })
 */
 
 

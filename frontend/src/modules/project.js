@@ -36,7 +36,7 @@ const getTodos = () => {
 
   const getAllProjects = async () => {
     try{
-        // online swagger link here 
+        // online swagger link here - https://pwa-backend-mg85.onrender.com/api/
         await fetch("http://localhost:2000/api/project", {method: 'GET'})
           .then(res => res.json())
           .then(data =>{

@@ -11,7 +11,7 @@
                 </li>
             </ul>
             <ul class="project-grid">
-                <li v-for="project in pState.projects" :key="project._id">
+                <li v-for="project in pState.project" :key="project._id">
                     <RouterLink :to="`/project/${project._id}`">
                         <img src="" alt="">
                         <h3>{{ project.title }}</h3>

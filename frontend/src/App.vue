@@ -1,11 +1,23 @@
 <template>
   <div id="nav">
+    <Nav></Nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/projects">Projects</router-link> |
     <router-link to="/tasks">Tasks</router-link> |
   </div>
   <router-view/>
 </template>
+
+<script>
+import Nav from './components/Nav.vue'
+
+export default {
+  name: 'App',
+    components: {
+      Nav
+    }
+}
+</script>
 
 <style lang="scss">
 

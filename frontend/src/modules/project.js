@@ -46,7 +46,7 @@ const getTodos = () => {
     catch(error) {
         console.log(error)
     }
-}
+};
 /* 
   const GetAllTodos = async () => {
     try {
@@ -76,7 +76,7 @@ const getTodos = () => {
     }
     fetch("http://localhost:2000/project/new", requestOptions) 
     .then(getAllProjects)
-}
+};
 
 /* 
   const newTodo = () => { 
@@ -101,7 +101,7 @@ const getTodos = () => {
 
     fetch("http://localhost:2000/project/delete/" + _id , { method: "DELETE"})
     .then(getAllProjects)
-}
+};
 
 /* 
   const deleteTodo = (_id) => {

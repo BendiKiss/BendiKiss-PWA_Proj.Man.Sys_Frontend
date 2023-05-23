@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "netlify-cli": "^15.1.1",
     "node": "^16.20.0",
     "serve": "^14.2.0",
     "vue": "^3.0.0",

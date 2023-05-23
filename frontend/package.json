@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0",
     "node": "^16.20.0",
+    "serve": "^14.2.0",
+    "vue": "^3.0.0",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {

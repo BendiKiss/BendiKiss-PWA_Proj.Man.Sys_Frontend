@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# render deploy
+#fine-grained token
+#tokan name: render.frontend.deploy
+# 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

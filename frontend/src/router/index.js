@@ -6,7 +6,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: false }
   }, 
   {
     path: '/projects',
@@ -23,12 +23,14 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/LoginView.vue')
+    component: () => import('../views/LoginView.vue'),
+    meta: { requiresAuth: false }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import( '../views/RegisterView.vue')
+    component: () => import( '../views/RegisterView.vue'),
+    meta: { requiresAuth: false }
   },
   {
     path: '/project',
@@ -65,7 +67,6 @@ router.beforeEach(async (to, from, next) => {
   const isAuthenticated = localStorage.getItem("auth-token")
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   
-  //const isAuthenticated =  true
   if ( !isAuthenticated && requiresAuth) {
     next('/login')
   }

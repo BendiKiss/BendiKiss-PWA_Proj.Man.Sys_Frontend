@@ -57,6 +57,7 @@ const getUser = () => {
     }
 
     let loginUser = async () => {
+
         const requestOptions = {
             method: "POST",
             headers: {
@@ -72,15 +73,16 @@ const getUser = () => {
         .then(res => res.json())
         .then(data => { 
            
-            //console.log('data', data.token)
+            console.log('data', data.data.token)
+            console.log('data', data)
             //storing the data locally in the browser
-            localStorage.setItem("auth-token", data.data.token),
-            localStorage.setItem("userID", data.data.id),
-            localStorage.setItem("username", data.data.username),
-            localStorage.setItem("email", data.data.email),
+            localStorage.setItem('auth-token', data.data.token)
+            localStorage.setItem("userID", data.data.id)
+            localStorage.setItem("username", data.data.username)
+            localStorage.setItem("email", data.data.email)
             localStorage.setItem("userType", data.data.userType)
         }) 
-        .then(router.push('/' + localStorage.getItem("userID"))) // almost certain this is issue when log in, yeessshs
+        //.then(router.push('/' + localStorage.getItem("userID"))) // almost certain this is issue when log in, yeessshs
         .catch(error => {
             console.log(error.message)
         });

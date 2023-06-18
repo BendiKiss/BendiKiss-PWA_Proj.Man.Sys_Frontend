@@ -4,12 +4,8 @@
             <router-link to="/">Home</router-link> |
             <router-link to="/projects">Projects</router-link> |
             <router-link to="/tasks">Tasks</router-link> |
-            <li class="profile">
-                <a href="#">Profile</a>
-            </li>
-            <li class="logout">
+                <a href="#">Profile</a> |
                 <a @click="logOut()">LogOut</a>
-            </li>
         </div>        
     </nav>
 
@@ -31,7 +27,7 @@ export default  {
 </script>
 
 <style lang="scss" scoped>
-li a{
+a{
     text-decoration: underline;
 }
 </style>

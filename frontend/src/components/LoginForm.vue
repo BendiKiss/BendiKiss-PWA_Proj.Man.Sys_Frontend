@@ -6,22 +6,38 @@
         <br>
         <button @click="loginUser()">Log in</button>
         <router-link to="/register">
-            <button>Sign up</button>
+            <button>Register</button>
         </router-link>
 
 
     </div>
 </template>
 
-<script>
-export default {
-    setup () {
-        
+<script setup>
+import user from "../modules/user";
 
-        return {}
+const { uState, loginUser } = user();
+
+/* export default {
+  name: "LoginFrom",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    async onSubmit() {
+      const response = await axios.post("user/login", {
+        email: this.email,
+        password: this.pass,
+      });  
+
     }
+  }
 }
-</script>
+*/
+ </script>
 
 <style lang="scss" scoped>
 

@@ -2,37 +2,36 @@
   <div>
 
     <h1>This is a Project List page</h1>
-    <button @click="newProject()">New project</button>
     <br>
-    <input type="text" placeholder="Project name" v-model="pState.newpName">
+    <input label="name" type="text" placeholder="Project name" v-model="pState.newpName">
     <span> Test: {{ pState.newpName }} </span>
     <br>
-    <input type="text" placeholder="Description" v-model="pState.newDescription">
+    <input label="description" type="text" placeholder="Description" v-model="pState.newDescription">
     <span> Test: {{ pState.newDescription }} </span>
-
     <br>
-    <div v-for="project in pState.projects" :key="project._id">
-      <router-link :to="`/project/${project._id}`">
+    <button @click="newProject()">New project</button>
+    <div v-for="proj in pState.project" v-bind:key="proj._id">
+      <router-link :to="`/project/${proj._id}`">
         <h4>
-          {{ project.name }}
+          {{ proj.name }}
         </h4>
         <p>
-          {{ project.description }}
+          {{ proj.description }}
         </p>
-        <button @click="editProject(project._id)">Edit</button>
+        <button @click="editProject(proj._id)">Edit</button>
       </router-link>
 
-      <button @click="deleteProject(project._id)">Delete</button>     
+      <button @click="deleteProject(proj._id)">Delete</button>     
     </div>
     <br>
-    <p>{{ pState }}</p>
+    <!-- <p>{{ pState }}</p> -->
 
   </div>
 </template>
 
-<script>
-/* 
+<script> 
 
+/* 
   ^ "setup" into the script tag
 
 import project from '../modules/project'
@@ -43,7 +42,7 @@ import {  onMounted, ref } from 'vue';
     newDescription: '',
     projects: {}
   })
-
+ 
       
   const { pState, getAllProjects, newProject, editProject, deleteProject } = project()
 

@@ -18,6 +18,7 @@ const getTasks = () => {
     const getAllTasks = async () => {
         try{
             // online swagger link here - https://pwa-backend-mg85.onrender.com/api/
+            //await fetch("https://pwa-backend-mg85.onrender.com/api/task", {method: 'GET'})
             await fetch("http://localhost:2000/api/task", {method: 'GET'})
             .then(res => res.json())
             .then(data =>{
@@ -32,7 +33,7 @@ const getTasks = () => {
     const newTask = () => {
         const requestOptions = {
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "applocation/json"
                 //"auth-token": pState.token.
             },
@@ -41,20 +42,21 @@ const getTasks = () => {
                 descrioption: tState.value.newtDescription
             })
         }
-        fetch("http://localhost:2000/task/new", requestOptions) 
+        fetch("https://pwa-backend-mg85.onrender.com/api/new", requestOptions) 
+        //fetch("http://localhost:2000/task/new", requestOptions) 
         .then(getAllTasks)
     };
 
     const deleteTask = (_id) => {
-
-        fetch("http://localhost:2000/task/delete/" + _id , { method: "DELETE"})
+        fetch("https://pwa-backend-mg85.onrender.com/api/task/delete/" + _id , { method: "DELETE"})
+        //fetch("http://localhost:2000/task/delete/" + _id , { method: "DELETE"})
         .then(getAllTasks)
     };
 
     const editTask = () => {
         const requestOptions = {
             method: "PUT",
-            header: {
+            headers: {
                 "Content-Type": "applocation/json"
                 //"auth-token": pState.token.
             },
@@ -63,6 +65,7 @@ const getTasks = () => {
                 descrioption: tState.value.newtDescription
             })
         } 
+        //fetch("https://pwa-backend-mg85.onrender.com/api/task/update/" + taskId.value, requestOptions)
         fetch("http://localhost:2000/task/update/" + taskId.value, requestOptions)
         .then(res => res.body)
         .then(res => {console.log(res)})
@@ -72,6 +75,7 @@ const getTasks = () => {
     const task = reactive({})
     const getSpecificTask = async () => {
         try{
+            //fetch("https://pwa-backend-mg85.onrender.com/api/task")
             fetch("http://localhost:2000/task")
             .then(res => res.json())
             .then(data => {

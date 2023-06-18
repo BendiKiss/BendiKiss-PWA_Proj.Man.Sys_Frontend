@@ -88,7 +88,8 @@ const getUser = () => {
 
     const logOut = () => {
         localStorage.clear();
-        router.push("/login");
+        //router.push("/login");
+        window.location="/login"
     }
  return {
             uState,

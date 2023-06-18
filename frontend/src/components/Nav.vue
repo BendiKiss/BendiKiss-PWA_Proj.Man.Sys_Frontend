@@ -20,12 +20,18 @@ import user from "../modules/user"
 
 const { logOut } = user()
 
+
 export default  {
-      name: 'Nav',
+    name: 'Nav',
+    setup() {
+        return {logOut}
+    }
 
 }
 </script>
 
 <style lang="scss" scoped>
-
+li a{
+    text-decoration: underline;
+}
 </style>

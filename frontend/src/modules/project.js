@@ -21,9 +21,9 @@ const getProjects = () => {
     try{
 
         // online swagger link here - https://pwa-backend-mg85.onrender.com/api/
-        //await fetch("https://pwa-backend-mg85.onrender.com/api/project", {method: 'GET'})
+        await fetch("https://pwa-backend-mg85.onrender.com/api/project", {method: 'GET'})
         // local link
-        await fetch("http://localhost:2000/api/project", {method: 'GET'})
+        //await fetch("http://localhost:2000/api/project", {method: 'GET'})
           .then(res => res.json())
           .then(data =>{
             pState.value.project = data
@@ -46,15 +46,15 @@ const getProjects = () => {
             description: pState.value.newDescription
         })
     }
-    //fetch("https://pwa-backend-mg85.onrender.com/api/project/new", requestOptions)
-     fetch("http://localhost:2000/api/project/new", requestOptions) 
+    fetch("https://pwa-backend-mg85.onrender.com/api/project/new", requestOptions)
+    //fetch("http://localhost:2000/api/project/new", requestOptions) 
     .then(getAllProjects)
   }; 
 
   const deleteProject = (_id) => {
 
-    //fetch("https://pwa-backend-mg85.onrender.com/api/project/delete/" + _id , { method: "DELETE"})
-     fetch("http://localhost:2000/api/project/delete/" + _id , { method: "DELETE"})
+    fetch("https://pwa-backend-mg85.onrender.com/api/project/delete/" + _id , { method: "DELETE"})
+    //fetch("http://localhost:2000/api/project/delete/" + _id , { method: "DELETE"})
     .then(getAllProjects)
   };
 
@@ -70,8 +70,8 @@ const getProjects = () => {
             descrioption: pState.value.newDescription
         })
     }
-    //fetch("https://pwa-backend-mg85.onrender.com/api/project/update/" + projectId.value, requestOptions)
-    fetch("http://localhost:2000/api/project/update/" + projectId.value, requestOptions)
+    fetch("https://pwa-backend-mg85.onrender.com/api/project/update/" + projectId.value, requestOptions)
+    //fetch("http://localhost:2000/api/project/update/" + projectId.value, requestOptions)
     .then(res => res.body)
     .then(res => {console.log(res)})
     router.push('/project')
@@ -81,8 +81,8 @@ const getProjects = () => {
   const getSpecificProject = async () => {
     
       try{
-         // fetch("https://pwa-backend-mg85.onrender.com/api/project")
-        fetch("http://localhost:2000/api/project")
+        fetch("https://pwa-backend-mg85.onrender.com/api/project")
+        //fetch("http://localhost:2000/api/project")
           .then(res => res.json())
           .then(data => {
               project.value = data.filter(p => p._id ===projectId.value)

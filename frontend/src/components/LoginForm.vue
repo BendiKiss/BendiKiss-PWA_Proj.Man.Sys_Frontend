@@ -4,7 +4,8 @@
         <br>
         <input type="text" placeholder="Password" v-model="uState.password">
         <br>
-        <button @click="loginUser()">Log in</button>
+        <button v-if=" !uState.email || !uState.password " disabled @click="loginUser()">Log in</button>
+        <button v-else  @click="loginUser()">Log in</button>
         <router-link to="/register">
             <button>Register</button>
         </router-link>
@@ -13,30 +14,21 @@
     </div>
 </template>
 
-<script setup>
+<script>
 import user from "../modules/user";
 
-const { uState, loginUser } = user();
+export default {
+  name: "LoginForm",
 
-/* export default {
-  name: "LoginFrom",
-  data() {
+  setup() {
+    const { uState, loginUser } = user();
+
     return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    async onSubmit() {
-      const response = await axios.post("user/login", {
-        email: this.email,
-        password: this.pass,
-      });  
-
+      uState,
+      loginUser
     }
-  }
+  },
 }
-*/
  </script>
 
 <style lang="scss" scoped>

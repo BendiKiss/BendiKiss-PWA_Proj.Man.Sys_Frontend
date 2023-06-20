@@ -1,11 +1,21 @@
 <template>
-    <nav class="navbar navbar-expand navbar-dark fixed-top">
-        <div class="container">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/projects">Projects</router-link> |
-            <router-link to="/tasks">Tasks</router-link> |
-                <a href="#">Profile</a> |
-                <a @click="logOut()">LogOut</a>
+    <nav class="nav-container">
+        <div class="nav-menu">
+            <li class="nav-item">
+                <router-link to="/" class="nav-link">Home</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/projects" class="nav-link">Projects</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/tasks" class="nav-link">Tasks</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/profile" class="nav-link">Profile</router-link>
+            </li>
+            <li class="nav-item">
+               <a @click="logOut()" class="nav-link">Logout</a>
+            </li>
         </div>        
     </nav>
 
@@ -27,7 +37,33 @@ export default  {
 </script>
 
 <style lang="scss" scoped>
-a{
-    text-decoration: underline;
+.nav-container {
+  background-color: #c36b00;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: large;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 30px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffcc00;
+ text-decoration: underline;
 }
 </style>

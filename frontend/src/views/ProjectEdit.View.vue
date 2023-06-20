@@ -2,13 +2,6 @@
     <div>
         <h1>This is the edit project page!</h1>
     </div>
-    <div v-for="item in todo" :key="item._id">
-        Author: <h4>{{item.author}}</h4>
-        Todo Item: <p>{{item.todo}}</p>
-      </div>
-
-    <hr>
-
     <input type="text" placeholder="Project name" v-model="pState.newpName">
     <!-- <span> Test: {{ pState.newpName }} </span> -->
     <br>

@@ -4,8 +4,8 @@
         <br>
         <input type="text" placeholder="Password" v-model="uState.password">
         <br>
-        <button v-if=" !uState.email || !uState.password " disabled @click="loginUser()">Log in</button>
-        <button v-else  @click="loginUser()">Log in</button>
+        <button type="submit" v-if=" !uState.email || !uState.password " disabled @click="loginUser()">Log in</button>
+        <button type="submit" v-else  @click="loginUser()">Log in</button>
         <router-link to="/register">
             <button>Register</button>
         </router-link>

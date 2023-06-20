@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-   <!--  <img alt="Vue logo" src="../assets/logo.png">  -->
+    <img alt="logo" src="../assets/logo.png"> 
     <h1>TaskForge</h1>
     <h3>Efficiency Unleashed</h3>
     <h4>Welcome here!</h4>

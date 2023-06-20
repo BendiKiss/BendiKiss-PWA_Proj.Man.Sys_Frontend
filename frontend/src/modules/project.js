@@ -1,5 +1,3 @@
-
-
 import { ref, reactive, computed } from 'vue'
 import { useRoute , useRouter } from 'vue-router'
  
@@ -19,13 +17,9 @@ const getProjects = () => {
 
   const getAllProjects = async () => {
     try{
-
-        // online swagger link here - https://pwa-backend-mg85.onrender.com/api/
-        await fetch("https://pwa-backend-mg85.onrender.com/api/project", {method: 'GET'})
-        // local link
-        //await fetch("http://localhost:2000/api/project", {method: 'GET'})
+        await fetch("https://pwa-backend-mg85.onrender.com/api/project", { method: 'GET' })
           .then(res => res.json())
-          .then(data =>{
+          .then(data => {
             pState.value.project = data
         })
     }
@@ -47,14 +41,11 @@ const getProjects = () => {
         })
     }
     fetch("https://pwa-backend-mg85.onrender.com/api/project/new", requestOptions)
-    //fetch("http://localhost:2000/api/project/new", requestOptions) 
     .then(getAllProjects)
   }; 
 
   const deleteProject = (_id) => {
-
-    fetch("https://pwa-backend-mg85.onrender.com/api/project/delete/" + _id , { method: "DELETE"})
-    //fetch("http://localhost:2000/api/project/delete/" + _id , { method: "DELETE"})
+    fetch("https://pwa-backend-mg85.onrender.com/api/project/delete/" + _id , { method: "DELETE" })
     .then(getAllProjects)
   };
 
@@ -62,36 +53,34 @@ const getProjects = () => {
     const requestOptions = {
         method: "PUT",
         headers: {
-            "Content-Type": "applocation/json"
+            "Content-Type": "application/json"
             //"auth-token": pState.token.
         },
         body: JSON.stringify({
             name: pState.value.newpName,
-            descrioption: pState.value.newDescription
+            description: pState.value.newDescription
         })
     }
     fetch("https://pwa-backend-mg85.onrender.com/api/project/update/" + projectId.value, requestOptions)
-    //fetch("http://localhost:2000/api/project/update/" + projectId.value, requestOptions)
     .then(res => res.body)
-    .then(res => {console.log(res)})
+    .then(res => { console.log(res) })
     router.push('/project')
   };
 
   const project = reactive({})
-  const getSpecificProject = async () => {
-    
-      try{
-        fetch("https://pwa-backend-mg85.onrender.com/api/project")
-        //fetch("http://localhost:2000/api/project")
+  const getSpecificProject = async () => {  
+      try {
+        fetch("https://pwa-backend-mg85.onrender.com/api/project/")
           .then(res => res.json())
           .then(data => {
-              project.value = data.filter(p => p._id ===projectId.value)
+              project.value = data.filter(p => p._id === projectId.value)
           })    
       }
-      catch(error){
+      catch(error) {
           console.log(error)
       }
   };
+  
 
   return {
     pState, 
@@ -102,8 +91,7 @@ const getProjects = () => {
     deleteProject,
     editProject,
     getSpecificProject,
-}
+  }
 }
 
 export default getProjects
-

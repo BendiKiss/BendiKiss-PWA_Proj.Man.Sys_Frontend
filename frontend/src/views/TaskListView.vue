@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h1>This is a tasks list page</h1>
-    <button @click="newTask()">New task</button>
+    <h1>This is a Tasks list page</h1>
     <br>
     <input type="text" placeholder="Task name" v-model="tState.newtName">
-    <span> Test: {{ tState.newtName }} </span>
+    <!-- <span> Test: {{ tState.newtName }} </span> -->
     <br>
     <input type="text" placeholder="Description" v-model="tState.newtDescription">
-    <span> Test: {{ tState.newtDescription }} </span>
-
+    <!-- <span> Test: {{ tState.newtDescription }} </span> -->    
     <br>
-    <div v-for="task in tState.tasks" :key="task._id">
+    <button @click="newTask()">New task</button>
+
+    <div v-for="task in tState.task" :key="task._id">
       <router-link :to="`/task/${task._id}`">
         <h4>
           {{ task.name }}
@@ -18,13 +18,13 @@
         <p>
           {{ task.description }}
         </p>
-        <button @click="editTask(task._id)">Edit</button>
+        <button @click="getSpecificTask(task._id)">Edit</button>
       </router-link>
 
       <button @click="deleteTask(task._id)">Delete</button>     
     </div>
     <br>
-    <p>{{ tState }}</p>
+   <!--  <p>{{ tState }}</p> -->
 
 
   </div>
@@ -37,13 +37,13 @@ import { onMounted } from 'vue';
   export default{
 
     setup() {
-      const { tState, getAllTasks, newTask, editTask, deleteTask } = task ()
+      const { tState, getAllTasks, newTask, editTask, deleteTask, getSpecificTask } = task ()
 
       onMounted( async() => {
         await getAllTasks
       })
 
-      return { tState, getAllTasks, newTask, editTask, deleteTask }
+      return { tState, getAllTasks, newTask, editTask, deleteTask, getSpecificTask }
     }
   }
 

@@ -35,14 +35,14 @@ const getTasks = () => {
             method: "POST",
             headers: {
                 "Content-Type": "applocation/json"
-                //"auth-token": pState.token.
+                //"auth-token": tState.token.
             },
             body: JSON.stringify({
                 name: tState.value.newtName,
                 descrioption: tState.value.newtDescription
             })
         }
-        fetch("https://pwa-backend-mg85.onrender.com/api/new", requestOptions) 
+        fetch("https://pwa-backend-mg85.onrender.com/api/task/new", requestOptions) 
         //fetch("http://localhost:2000/task/new", requestOptions) 
         .then(getAllTasks)
     };

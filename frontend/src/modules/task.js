@@ -1,5 +1,6 @@
-import { reactive, computed } from 'vue'
+import { computed } from 'vue'
 import { useRoute , useRouter } from 'vue-router'
+import { reactive } from 'vue/dist/vue.esm-bundler'
  
 const getTasks = () => {
 
@@ -12,64 +13,60 @@ const getTasks = () => {
     const tState = reactive({
         newtName: '',
         newtDescription: '',
-        task: {}
-    });
+        task: [],
+        projectId: ''
+      });
 
-    const getAllTasks = async () => {
-        try{
-            // online swagger link here - https://pwa-backend-mg85.onrender.com/api/
-            await fetch("https://pwa-backend-mg85.onrender.com/api/task", {method: 'GET'})
-            //await fetch("http://localhost:2000/api/task", {method: 'GET'})
+      const getAllTasks = async () => {
+        try {
+          await fetch("https://pwa-backend-mg85.onrender.com/api/task", { method: 'GET' })
             .then(res => res.json())
-            .then(data =>{
-                tState.task = data
-            })
+            .then(data => {
+              tState.task = data;
+            });
+        } catch (error) {
+          console.log(error);
         }
-        catch(error) {
-            console.log(error)
-        }
-    }
+      };
 
-    const newTask = () => {
+      const newTask = () => {
         const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "applocation/json"
-                //"auth-token": tState.token.
-            },
-            body: JSON.stringify({
-                name: tState.value.newtName,
-                descrioption: tState.value.newtDescription
-            })
-        }
-        fetch("https://pwa-backend-mg85.onrender.com/api/task/new", requestOptions) 
-        //fetch("http://localhost:2000/task/new", requestOptions) 
-        .then(getAllTasks)
-    };
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: tState.newtName,
+            description: tState.newtDescription,
+            projectId: tState.projectId
+          })
+        };
+      
+        fetch("https://pwa-backend-mg85.onrender.com/api/task/new/", requestOptions)
+          .then(getAllTasks);
+      };
+    
 
     const deleteTask = (_id) => {
-        fetch("https://pwa-backend-mg85.onrender.com/api/task/delete/" + _id , { method: "DELETE"})
-        //fetch("http://localhost:2000/task/delete/" + _id , { method: "DELETE"})
+        fetch("https://pwa-backend-mg85.onrender.com/api/task/delete/" + _id , { method: "DELETE" })
         .then(getAllTasks)
-    };
+      };
 
     const editTask = () => {
         const requestOptions = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "applocation/json"
-                //"auth-token": pState.token.
-            },
-            body: JSON.stringify({
-                name: tState.value.newtName,
-                descrioption: tState.value.newtDescription
-            })
-        } 
-        fetch("https://pwa-backend-mg85.onrender.com/api/task/update/" + taskId.value, requestOptions)
-        //fetch("http://localhost:2000/api/task/update/" + taskId.value, requestOptions)
-        .then(res => res.body)
-        .then(res => {console.log(res)})
-        router.push('/task')
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: tState.newtName,
+            description: tState.newtDescription,
+          })
+        };
+        fetch('https://pwa-backend-mg85.onrender.com/api/task/update/' + taskId.value, requestOptions)
+          .then(res => res.body)
+          .then(res => { console.log(res); });
+        router.push('/task');
     };
 
     const task = reactive({})

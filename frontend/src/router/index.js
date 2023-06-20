@@ -44,12 +44,6 @@ const routes = [
     component: () => import( '../views/RegisterView.vue'),
     meta: { requiresAuth: false }
   },
-  /*{
-    path: '/project',
-    name: 'Project',
-    component: () => import('../views/ProjectView.vue'),
-    meta: { requiresAuth: true }
-  },*/
   {
     path: '/task',
     name: 'Task',
@@ -57,7 +51,7 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/task',
+    path: '/task/:id',
     name: 'Task',
     component: () => import('../views/TaskView.vue'),
     meta: { requiresAuth: true }

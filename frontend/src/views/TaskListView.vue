@@ -2,15 +2,20 @@
   <div>
     <h1>This is a Tasks list page</h1>
     <br>
-    <input type="text" placeholder="Task name" v-model="tState.newtName">
+    <input label="name" type="text" placeholder="Task name" v-model="tState.newtName">
     <!-- <span> Test: {{ tState.newtName }} </span> -->
     <br>
-    <input type="text" placeholder="Description" v-model="tState.newtDescription">
+    <input label="description" type="text" placeholder="Description" v-model="tState.newtDescription">
     <!-- <span> Test: {{ tState.newtDescription }} </span> -->    
     <br>
-    <button @click="newTask()">New task</button>
+    <select v-model="tState.projectId">
+      <option v-for="project in pState.project" :key="project._id" :value="project._id">{{ project.name }}</option>
+    </select>
+    
+    <br>
+    <button @click="newTask('/project')">New task</button>
 
-    <div v-for="task in tState.task" :key="task._id">
+    <div v-for="task in tState.task"  v-bind:key="task._id">
       <router-link :to="`/task/${task._id}`">
         <h4>
           {{ task.name }}
@@ -18,12 +23,16 @@
         <p>
           {{ task.description }}
         </p>
+        <p>
+          {{ task.projectId }}
+        </p>
         <button @click="getSpecificTask(task._id)">Edit</button>
       </router-link>
 
       <button @click="deleteTask(task._id)">Delete</button>     
     </div>
     <br>
+    
    <!--  <p>{{ tState }}</p> -->
 
 
@@ -31,19 +40,22 @@
 </template>
 
 <script>
-import task from '../modules/task'
+import task from '../modules/task';
+import project from '../modules/project'
 import { onMounted } from 'vue';
 
   export default{
 
     setup() {
-      const { tState, getAllTasks, newTask, editTask, deleteTask, getSpecificTask } = task ()
+      const { tState, getAllTasks,  newTask, editTask, deleteTask, getSpecificTask } = task ()
+      const { pState, getAllProjects } = project ()
 
-      onMounted( async() => {
-        await getAllTasks
-      })
+      onMounted(async () => {
+        await getAllTasks();
+        await getAllProjects();
+      });
 
-      return { tState, getAllTasks, newTask, editTask, deleteTask, getSpecificTask }
+      return { pState, tState, getAllTasks, getAllProjects, newTask, editTask, deleteTask, getSpecificTask }
     }
   }
 

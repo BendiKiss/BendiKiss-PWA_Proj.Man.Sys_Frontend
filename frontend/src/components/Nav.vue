@@ -1,6 +1,6 @@
 <template>
     <nav class="nav-container">
-        <div class="nav-menu">
+        <ul class="nav-menu">
             <li class="nav-item">
                 <router-link to="/" class="nav-link">Home</router-link>
             </li>
@@ -14,9 +14,9 @@
                 <router-link to="/profile" class="nav-link">Profile</router-link>
             </li>
             <li class="nav-item">
-               <a @click="logOut()" class="nav-link">Logout</a>
+               <a @click="logOut()" class="nav-link logout-link">Logout</a>
             </li>
-        </div>        
+        </ul>        
     </nav>
 
 </template>
@@ -38,32 +38,40 @@ export default  {
 
 <style lang="scss" scoped>
 .nav-container {
-  background-color: #c36b00;
+  background-color: #3f51b5;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #fff;
-  font-size: large;
+  height: 60px;
+  border-radius: 20px;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .nav-item {
-  margin: 0 30px;
+  margin: 0 20px;
 }
 
 .nav-link {
   color: #fff;
   text-decoration: none;
-  padding: 10px;
+  font-size: 18px;
+  padding: 12px 20px;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
   color: #ffcc00;
- text-decoration: underline;
+  text-decoration: underline;
+}
+
+.logout-link {
+  cursor: pointer;
 }
 </style>

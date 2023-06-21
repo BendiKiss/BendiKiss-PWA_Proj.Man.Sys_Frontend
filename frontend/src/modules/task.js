@@ -85,7 +85,6 @@ const getTasks = () => {
     const getSpecificTask = async () => {
         try{
             fetch("https://pwa-backend-mg85.onrender.com/api/task")
-            //fetch("http://localhost:2000/api/task")
             .then(res => res.json())
             .then(data => {
                 task.value = data.filter(p => p._id ===taskId.value)

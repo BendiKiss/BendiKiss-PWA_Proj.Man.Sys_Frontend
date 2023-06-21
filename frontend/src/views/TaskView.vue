@@ -26,7 +26,6 @@ import taskFunctions from '../modules/task';
 import project from '../modules/project';
 import { onMounted } from 'vue';
 
-
 export default {
   setup() {
     const { editTask, tState, getSpecificTask, task, taskId } = taskFunctions()

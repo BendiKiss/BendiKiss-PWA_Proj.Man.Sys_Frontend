@@ -7,10 +7,6 @@
       <input type="text" placeholder="Username" v-model="uState.username" class="form-input">
       <input type="text" placeholder="Email" v-model="uState.email" class="form-input">
       <button class="edit-btn" @click="editUser()">Edit account</button>
-<!--  
-      <input type="password" placeholder="Password" v-model="uState.password" class="form-input">
-      <button class="edit-btn" @click="editPass()">Edit password</button>
--->
     </div>
     <div class="gradient"></div>
   </div>

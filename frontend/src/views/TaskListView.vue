@@ -2,11 +2,9 @@
   <div class="new-task">
     <h1>Tasks creator page</h1>
     <br>
-    <input label="name" type="text" placeholder="Task name" v-model="tState.newtName">
-    <!-- <span> Test: {{ tState.newtName }} </span> -->
+      <input label="name" type="text" placeholder="Task name" v-model="tState.newtName">
     <br>
-    <input label="description" type="text" placeholder="Description" v-model="tState.newtDescription">
-    <!-- <span> Test: {{ tState.newtDescription }} </span> -->    
+      <input label="description" type="text" placeholder="Description" v-model="tState.newtDescription">
     <br>
     <div class="form-group">
       <input type="text" placeholder="Deadline" v-model="tState.newtDeadline">
@@ -14,12 +12,9 @@
     <select v-model="tState.projectId">
       <option v-for="project in pState.project" :key="project._id" :value="project._id">{{ project.name }}</option>
     </select>
-    
     <br>
-    <button @click="newTask()">New task</button>
-    
-    <!--  <p>{{ tState }}</p> -->
-  </div>
+      <button @click="newTask()">New task</button>
+    </div>
   <div class="gradient"></div>
 </template>
 
@@ -88,6 +83,5 @@ export default {
   background: linear-gradient(to top, #ff8c00, #ffffff);
   height: 50vh;
 }
-
 
 </style>

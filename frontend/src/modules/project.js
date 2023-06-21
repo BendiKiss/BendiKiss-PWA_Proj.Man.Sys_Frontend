@@ -61,7 +61,6 @@ const getProjects = () => {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
-            //"auth-token": pState.token.
         },
         body: JSON.stringify({
             name: pState.newpName,
@@ -99,8 +98,6 @@ const getProjects = () => {
       console.log(error);
     }
   };
-
-  
 
   return {
     pState, 

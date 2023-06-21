@@ -80,7 +80,6 @@ const getUser = () => {
             })
         };
         await fetch("https://pwa-backend-mg85.onrender.com/api/user/login", requestOptions)
-        //await fetch("http://localhost:4000/api/user/login", requestOptions)
             .then(res => res.json())
             .then(data => {
                 router.push('/projects')

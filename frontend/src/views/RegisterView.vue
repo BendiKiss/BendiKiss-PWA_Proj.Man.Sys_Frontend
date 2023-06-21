@@ -1,6 +1,5 @@
 <template>
   <div class="register">
-    <h1>This is a register page</h1>
       <RegisterForm/>
 
   </div>
@@ -11,3 +10,7 @@ import RegisterForm from '../components/RegisterForm.vue';
 
 
 </script>
+
+<style>
+
+</style>

@@ -12,6 +12,7 @@ const getProjects = () => {
     const pState = reactive({
       newpName: '',
       newDescription: '',
+      newDeadline: '',
       project: [],
       tasks: []
     });
@@ -26,21 +27,29 @@ const getProjects = () => {
       }
     };
 
-  const newProject = () => {
-    const requestOptions = {
+    const newProject = () => {
+      const requestOptions = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
-            //"auth-token": pState.token.
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name:  pState.newpName,
-            description: pState.newDescription
+          name: pState.newpName,
+          description: pState.newDescription,
+          deadline: pState.newDeadline
         })
-    }
-    fetch("https://pwa-backend-mg85.onrender.com/api/project/new", requestOptions)
-    .then(getAllProjects)
-  }; 
+      };
+    
+      fetch("https://pwa-backend-mg85.onrender.com/api/project/new", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
 
   const deleteProject = (_id) => {
     fetch("https://pwa-backend-mg85.onrender.com/api/project/delete/" + _id , { method: "DELETE" })
@@ -56,13 +65,14 @@ const getProjects = () => {
         },
         body: JSON.stringify({
             name: pState.newpName,
-            description: pState.newDescription
+            description: pState.newDescription,
+            deadline: pState.newDeadline
         })
     }
     fetch("https://pwa-backend-mg85.onrender.com/api/project/update/" + projectId.value, requestOptions)
     .then(res => res.body)
     .then(res => { console.log(res) })
-    router.push('/project')
+    router.push('/projects')
   };
 
   const project = reactive({})

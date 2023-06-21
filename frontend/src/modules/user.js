@@ -83,6 +83,7 @@ const getUser = () => {
         //await fetch("http://localhost:4000/api/user/login", requestOptions)
             .then(res => res.json())
             .then(data => {
+                router.push('/projects')
                 if (data && data.data && data.data.token) {
                     localStorage.setItem('Authorization', data.data.token);
                     localStorage.setItem("userID", data.data.id);

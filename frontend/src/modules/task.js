@@ -13,6 +13,7 @@ const getTasks = () => {
     const tState = reactive({
         newtName: '',
         newtDescription: '',
+        newtDeadline: '',
         task: [],
         projectId: ''
       });
@@ -38,18 +39,27 @@ const getTasks = () => {
           body: JSON.stringify({
             name: tState.newtName,
             description: tState.newtDescription,
+            deadline: tState.deadline,
             projectId: tState.projectId
           })
         };
       
         fetch("https://pwa-backend-mg85.onrender.com/api/task/new/", requestOptions)
-          .then(getAllTasks);
-      };
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
     
 
     const deleteTask = (_id) => {
         fetch("https://pwa-backend-mg85.onrender.com/api/task/delete/" + _id , { method: "DELETE" })
         .then(getAllTasks)
+        location.reload();
       };
 
     const editTask = () => {
@@ -61,12 +71,14 @@ const getTasks = () => {
           body: JSON.stringify({
             name: tState.newtName,
             description: tState.newtDescription,
+            deadline: tState.newtDeadline,
+            projectId: tState.projectId
           })
         };
         fetch('https://pwa-backend-mg85.onrender.com/api/task/update/' + taskId.value, requestOptions)
           .then(res => res.body)
           .then(res => { console.log(res); });
-        router.push('/task');
+        router.push('/projects');
     };
 
     const task = reactive({})

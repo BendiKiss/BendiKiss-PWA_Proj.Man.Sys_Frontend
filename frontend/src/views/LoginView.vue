@@ -1,6 +1,5 @@
 <template>
   <div class="login">
-    <h1>Please log in!</h1>
       <LoginForm/>
   </div>
 </template>
@@ -11,3 +10,4 @@ import LoginForm from "../components/LoginForm.vue";
 
 
 </script>
+
